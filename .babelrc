@@ -1,0 +1,26 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "useBuiltIns": true,
+        "targets": {
+          "browsers": ["last 4 versions", "safari >= 7"]
+        }
+      }
+    ],
+    "stage-2"
+  ],
+  "plugins": ["transform-runtime"],
+  "comments": false,
+  "env": {
+    "development": {
+      "presets": ["es2015", "stage-2"],
+      "comments": false
+    },
+    "production": {
+      "presets": ["es2015-rollup"],
+      "comments": false
+    }
+  }
+}
