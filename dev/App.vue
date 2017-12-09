@@ -18,7 +18,11 @@
                       placeholder="Demo placeholder"
                       containerId="container-0"
                       fieldId="field-0"
-                      fieldName="field-0">
+                      fieldName="field-0"
+                      field-classes="boo"
+                      container-classes="yah"
+                      :list-classes="{'banana': true}"
+                      :list-item-classes="{'papaya': true}"
               <label slot="label-top" for="field-0">With an initial oneline address</label>
             </vue-dawa>
             <div class="clear"></div>

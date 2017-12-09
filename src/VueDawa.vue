@@ -1,7 +1,7 @@
 <template>
-    <div class="autocomplete-container" :id="containerId">
+    <div class="autocomplete-container" :class="containerClasses" :id="containerId">
         <slot name="label-top"></slot>
-        <input
+        <input :class="fieldClasses"
                 v-focus.lazy="inputFocused"
                 :placeholder="placeholder"
                 :id="fieldId"
@@ -19,19 +19,16 @@
                 @keydown.esc="emptyResultsList()"
                 @blur="inputFocused = false">
         <slot name="label-bottom"></slot>
-        <div class="results-container" v-if="results && results.length > 0">
-            <ul class="dawa-autocomplete-suggestions">
-                <li class="dawa-autocomplete-suggestion"
-                    v-for="(result, index) of results"
-                    :class="{active: isActive(index)}"
-                    :key="index"
-                    :ref="'result_' + index"
-                    @click.prevent="select(result)"
-                    @enter.prevent="select(result)">
-                    {{result.tekst}}
-                </li>
-            </ul>
-        </div>
+        <ul class="dawa-autocomplete-suggestions" :class="listClasses" v-if="results && results.length > 0" :id="containerId + '_' + 'results'">
+            <li class="dawa-autocomplete-suggestion" :class="computedListItemClasses(index)"
+                v-for="(result, index) of results"
+                :key="index"
+                :ref="'result_' + index"
+                @click.prevent="select(result)"
+                @enter.prevent="select(result)">
+                {{result.tekst}}
+            </li>
+        </ul>
     </div>
 </template>
 <script>
@@ -54,15 +51,27 @@
         required: true,
         type: String
       },
+      containerClasses: {
+        type: [String, Object]
+      },
       // for improved accessibility when used with label
       fieldId: {
         required: true,
         type: String
       },
+      fieldClasses: {
+        type: [String, Object]
+      },
       // for use with form validation
       fieldName: {
         required: true,
         type: String
+      },
+      listClasses: {
+        type: [String, Object]
+      },
+      listItemClasses: {
+        type: [String, Object]
       },
       // describe the field (optional)
       label: {
@@ -110,6 +119,9 @@
       }
     },
     methods: {
+      computedListItemClasses (index) {
+        return Object.assign({'active': this.isActive(index)}, this.listItemClasses)
+      },
       search () {
         this.inputFocused = true
         if (this.terms && this.terms.length < this.dawaService.options.minLength) {
