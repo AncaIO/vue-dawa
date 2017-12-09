@@ -101,7 +101,7 @@
       return {
         results: [],
         selectedResult: null,
-        terms: this.val,
+        terms: this.val || '',
         defaultCaretPos: 2,
         caretPos: 2,
         oldCaretPos: null,
@@ -122,12 +122,12 @@
       },
       search () {
         this.inputFocused = true
-        if (this.terms && this.terms.length < this.dawaService.options.minLength) {
+        if (this.terms.length < this.dawaService.options.minLength) {
           this.$set(this, 'results', [])
         }
         this.getCaretPosition()
           .then(() => {
-            if (this.caretPos !== this.oldCaretPos && this.terms && this.terms.length >= this.dawaService.options.minLength) {
+            if (this.caretPos !== this.oldCaretPos && this.terms.length >= this.dawaService.options.minLength) {
               // caret position is now updated, proceed with search
               this.dawaService.update(this.terms, this.caretPos)
             }
@@ -169,7 +169,7 @@
           this.currentIndex = 0
           this.emptyResultsList()
           // results aren't yet narrowed down to a full address, search again
-          if ((this.terms && this.caretPos !== this.terms.length) || (item.type !== this.dawaService.options.type)) {
+          if ((this.terms.length >= this.defaultCaretPos && this.caretPos !== this.terms.length) || (item.type !== this.dawaService.options.type)) {
             this.dawaService.update(this.terms, this.caretPos)
           }
         })
