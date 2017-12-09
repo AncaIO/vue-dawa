@@ -3,7 +3,16 @@
     <div id="main_container">
       <nav>
         <div class="nav-wrapper">
-          <a href="#" class="brand-logo">{{moduleName}} <sup>v.{{moduleVersion}}</sup></a>
+          <div class="container">
+            <a href="#" class="brand-logo">{{moduleName}} v.{{moduleVersion}} <sup><a href="https://travis-ci.org/AncaIO/vue-dawa" target="_blank"><img src="https://travis-ci.org/AncaIO/vue-dawa.svg?branch=master"></a></sup></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="https://www.anca.io"><i class="fas fa-home"></i></a></li>
+              <li><a :href="repo" target="_blank"><i class="fab fa-github"></i></a></li>
+              <li><a :href="bugs" target="_blank"><i class="fas fa-bug"></i></a></li>
+              <li><a href="https://www.npmjs.com/package/vuejs-dawa" target="_blank"><i class="fab fa-npm"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/ancaio"><i class="fab fa-linkedin-in"></i></a></li>
+            </ul>
+          </div>
         </div>
       </nav>
       <div class="container field-container-no">
@@ -73,10 +82,13 @@
 </template>
 
 <script type="text/javascript">
-  import VueDawa from '../src/index.js'
+  import VueDawa from '../src/index'
   const VERSION = JSON.stringify(require('../package.json').version).replace(/"/g, '')
   const NAME = JSON.stringify(require('../package.json').config.prettyName).replace(/"/g, '')
-  export default{
+  const REPO = JSON.stringify(require('../package.json').homepage).replace(/"/g, '')
+  const BUGS = JSON.stringify(require('../package.json').bugs.url).replace(/"/g, '')
+
+  export default {
     components: {
       VueDawa
     },
@@ -84,6 +96,8 @@
       return {
         moduleName: NAME,
         moduleVersion: VERSION,
+        repo: REPO,
+        bugs: BUGS,
         firstAddress: {
           oneLineAddress: 'Tagensvej'
         },
@@ -115,7 +129,7 @@
         console.log(event)
       }
     }
-}
+  }
 </script>
 <style lang="css">
   html, body {
