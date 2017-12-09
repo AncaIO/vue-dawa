@@ -64,7 +64,6 @@
       },
       // for use with form validation
       fieldName: {
-        required: true,
         type: String
       },
       listClasses: {
