@@ -16,7 +16,8 @@
                 @keyup.enter="enter()"
                 @keydown.down = "down()"
                 @keydown.up = "up()"
-                @blur="closeList(); inputFocused = false">
+                @keydown.esc="emptyResultsList()"
+                @blur="inputFocused = false">
         <slot name="label-bottom"></slot>
         <div class="results-container" v-if="results && results.length > 0">
             <ul class="dawa-autocomplete-suggestions">
@@ -123,7 +124,7 @@
           })
       },
       handleResults (response) {
-        this.$set(this, 'results', [])
+        this.emptyResultsList()
         let results = []
         if (response.length) {
           for (let item of response) {
@@ -149,7 +150,7 @@
           this.inputFocused = true
           this.setCaretPosition(this.caretPos)
           this.currentIndex = 0
-          this.$set(this, 'results', [])
+          this.emptyResultsList()
           // results aren't yet narrowed down to a full address, search again
           if ((this.terms && this.caretPos !== this.terms.length) || (item.type !== this.dawaService.options.type)) {
             this.dawaService.update(this.terms, this.caretPos)
@@ -175,8 +176,8 @@
       isActive (index) {
         return index === this.currentIndex
       },
-      closeList () {
-        this.$set(this.results, [])
+      emptyResultsList () {
+        this.$set(this, 'results', [])
       },
       getCaretPosition () {
         return new Promise((resolve) => {
