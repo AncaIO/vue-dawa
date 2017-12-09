@@ -9,7 +9,6 @@
                 v-model="terms"
                 :cursor="caretPos"
                 @input="search()"
-                @click="search()"
                 @focus="search()"
                 @keydown.left="search()"
                 @keydown.right="search()"

@@ -201,8 +201,4 @@ export class DawaService {
     }
     this._scheduleRequest(request)
   }
-
-  destroy () {
-
-  }
 }
