@@ -146,6 +146,13 @@
         }
         let max = this.showMax ? this.showMax : results.length
         this.$set(this, 'results', results.slice(0, max))
+        this.$nextTick(() => {
+          let resultsList = document.getElementById(this.containerId + '_' + 'results')
+          if (resultsList) {
+            let listHeight = resultsList.getBoundingClientRect().height
+            this.$emit('listHeightUpdated', listHeight)
+          }
+        })
         if (this.results.length === 1 && this.initActions) {
           this.select(this.results[0])
           this.initActions = false
@@ -190,6 +197,7 @@
       },
       emptyResultsList () {
         this.$set(this, 'results', [])
+        this.$emit('listHeightUpdated', 0)
       },
       getCaretPosition () {
         return new Promise((resolve) => {

@@ -23,6 +23,8 @@
                       container-classes="yah"
                       :list-classes="{'banana': true}"
                       :list-item-classes="{'papaya': true}"
+                      @listHeightUpdated="doStuffWithHeight($event)"
+            >
               <label slot="label-top" for="field-0">With an initial oneline address</label>
             </vue-dawa>
             <div class="clear"></div>
@@ -108,6 +110,9 @@
           city: address.data.postnrnavn,
           oneLineAddress: address.tekst
         }
+      },
+      doStuffWithHeight (event) {
+        console.log(event)
       }
     }
 }
