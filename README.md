@@ -117,6 +117,12 @@ You can use this height to compute a min-height property on the container in que
 It's not flawless, but it will allow you to use the component in a container with `overflow: hidden`.  
 
 ## Styling 
+You can require the default style: 
+```javascript
+require('vue-dawa/dist/vue-dawa.min.css')
+```
+or customize the css yourself. Remember you can add custom classes to all the elements of the componets. 
+Here's a starting point for tweaking the default css.
 ```css
     .autocomplete-container {
         /* relative position for at de absolut positionerede forslag får korrekt placering.*/
