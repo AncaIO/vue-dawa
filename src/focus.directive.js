@@ -1,3 +1,4 @@
+'use strict'
 export const focus = {
   inserted (el, binding) {
     if (binding.value) el.focus()

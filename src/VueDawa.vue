@@ -31,6 +31,7 @@
     </div>
 </template>
 <script>
+  'use strict'
   import {getInputSelection} from './utils'
   import { DawaService } from './dawa.service'
   import {mixin} from './focus.directive'

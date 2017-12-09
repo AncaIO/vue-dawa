@@ -1,3 +1,4 @@
+'use strict'
 export const getInputSelection = (el) => {
   let start = 0, end = 0, normalizedValue, range,
     textInputRange, len, endRange
