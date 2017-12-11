@@ -76,7 +76,7 @@ A quick example:
    | Event                  | Value                       |
    | ---------------------- |------------------------------------------| 
    | `select`                 | `Object` - the raw DAWA address object   | 
-   | `listHeightUpdates`      | `double` - current height of results `ul`|  
+   | `listHeightUpdated`      | `double` - current height of results `ul`|  
    
 ## Props
 |Prop|Required|Type|Purpose|
