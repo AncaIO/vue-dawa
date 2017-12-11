@@ -1,6 +1,6 @@
 {
   "name": "vue-dawa",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Vue2 component for one-line address autocomplete using Danmarks Adressers WEB API.",
   "main": "./dist/vue-dawa.min.js",
   "files": [
