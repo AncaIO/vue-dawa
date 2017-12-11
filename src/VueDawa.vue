@@ -1,7 +1,7 @@
 <template>
     <div class="autocomplete-container" :class="containerClasses" :id="containerId">
         <slot name="label-top"></slot>
-        <input :class="fieldClasses"
+        <input autocomplete="off" :class="fieldClasses"
                 v-focus.lazy="inputFocused"
                 :placeholder="placeholder"
                 :id="fieldId"
