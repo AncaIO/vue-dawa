@@ -1,7 +1,8 @@
 <template>
     <div class="autocomplete-container" :class="containerClasses" :id="containerId">
+      <form @submit.prevent autocomplete="off">
         <slot name="label-top"></slot>
-        <input autocomplete="off" :class="fieldClasses"
+        <input :class="fieldClasses"
                 v-focus.lazy="inputFocused"
                 :placeholder="placeholder"
                 :id="fieldId"
@@ -28,6 +29,7 @@
                 {{result.tekst}}
             </li>
         </ul>
+      </form>
     </div>
 </template>
 <script>
