@@ -127,6 +127,7 @@
         this.inputFocused = true
         if (this.terms.length < this.dawaService.options.minLength) {
           this.$set(this, 'results', [])
+          this.$emit('listHeightUpdated', 0)
         }
         this.getCaretPosition()
           .then(() => {
