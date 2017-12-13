@@ -230,6 +230,9 @@
       val (newVal) {
         this.terms = newVal
         this.setCaretPosition(this.caretPos)
+      },
+      'terms' (newVal) {
+        this.$emit('inputChanged', newVal)
       }
     },
 
