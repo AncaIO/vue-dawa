@@ -1,8 +1,8 @@
 <template>
-    <div class="autocomplete-container" :class="containerClasses" :id="containerId">
+    <div class="autocomplete-container" :class="containerClasses" :id="containerId"  ref="container">
       <form @submit.prevent autocomplete="off">
         <slot name="label-top"></slot>
-        <input type="text" :class="fieldClasses"
+        <input type="text" ref="input" :class="fieldClasses"
                 v-focus.lazy="inputFocused"
                 :placeholder="placeholder"
                 :id="fieldId"
@@ -19,7 +19,7 @@
                 @keydown.esc="emptyResultsList()"
                 @blur="inputFocused = false">
         <slot name="label-bottom"></slot>
-        <ul class="dawa-autocomplete-suggestions" :class="listClasses" v-if="results && results.length > 0" :id="containerId + '_' + 'results'">
+        <ul class="dawa-autocomplete-suggestions" ref="resultsList" :class="listClasses" v-if="results && results.length > 0" :id="containerId + '_' + 'results'">
             <li class="dawa-autocomplete-suggestion" :class="computedListItemClasses(index)"
                 v-for="(result, index) of results"
                 :key="index"
@@ -111,7 +111,8 @@
         dawaService: null,
         inputFocused: false,
         currentIndex: 0,
-        initActions: true
+        initActions: true,
+        listHeight: 0
       }
     },
     computed: {
@@ -125,9 +126,10 @@
       },
       search () {
         this.inputFocused = true
+        this.currentIndex = 0
         if (this.terms.length < this.dawaService.options.minLength) {
           this.$set(this, 'results', [])
-          this.$emit('listHeightUpdated', 0)
+          this.listHeight = 0
         }
         this.getCaretPosition()
           .then(() => {
@@ -151,8 +153,7 @@
         this.$nextTick(() => {
           let resultsList = document.getElementById(this.containerId + '_' + 'results')
           if (resultsList) {
-            let listHeight = resultsList.getBoundingClientRect().height
-            this.$emit('listHeightUpdated', listHeight)
+            this.listHeight = resultsList.getBoundingClientRect().height
           }
         })
         if (this.results.length === 1 && this.initActions) {
@@ -198,8 +199,8 @@
         return index === this.currentIndex
       },
       emptyResultsList () {
+        this.listHeight = 0
         this.$set(this, 'results', [])
-        this.$emit('listHeightUpdated', 0)
       },
       getCaretPosition () {
         return new Promise((resolve) => {
@@ -224,6 +225,12 @@
           range.moveStart('character', pos)
           range.select()
         }
+      },
+      handleClickOutside (e) {
+        const el = this.$refs.container
+        if ((e.target !== this.$refs.input && e.target !== this.$refs.resultsList) || !el.contains(e.target)) {
+          this.emptyResultsList()
+        }
       }
     },
     watch: {
@@ -231,16 +238,26 @@
         this.terms = newVal
         this.setCaretPosition(this.caretPos)
       },
-      'terms' (newVal) {
+      terms (newVal) {
         this.$emit('inputChanged', newVal)
+      },
+      listHeight (newVal) {
+        this.$emit('listHeightUpdated', newVal)
       }
     },
-
     created () {
       this.dawaService = new DawaService(this.options, this.handleResults)
       if (this.addressId && this.initActions) {
         this.dawaService.selectInitial(this.addressId)
       }
+    },
+    mounted () {
+      document.addEventListener('click', this.handleClickOutside, true)
+      document.addEventListener('focus', this.handleClickOutside, true)
+    },
+    beforeDestroy () {
+      document.removeEventListener('click', this.handleClickOutside, true)
+      document.removeEventListener('focus', this.handleClickOutside, true)
     }
   }
 </script>
