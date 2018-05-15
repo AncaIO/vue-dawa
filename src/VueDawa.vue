@@ -127,13 +127,13 @@
       search () {
         this.inputFocused = true
         this.currentIndex = 0
-        if (this.terms.length < this.dawaService.options.minLength) {
+        if (this.terms && this.terms.length < this.dawaService.options.minLength) {
           this.$set(this, 'results', [])
           this.listHeight = 0
         }
         this.getCaretPosition()
           .then(() => {
-            if (this.caretPos !== this.oldCaretPos && this.terms.length >= this.dawaService.options.minLength) {
+            if (this.caretPos !== this.oldCaretPos && this.terms && this.terms.length >= this.dawaService.options.minLength) {
               // caret position is now updated, proceed with search
               this.dawaService.update(this.terms, this.caretPos)
             }
