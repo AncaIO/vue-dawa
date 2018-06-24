@@ -174,7 +174,8 @@
           this.currentIndex = 0
           this.emptyResultsList()
           // results aren't yet narrowed down to a full address, search again
-          if ((this.terms.length >= this.defaultCaretPos && this.caretPos !== this.terms.length) || (item.type !== this.dawaService.options.type)) {
+          if ((this.terms.length >= this.defaultCaretPos && this.caretPos !== this.terms.length) || (item.type !==
+            this.dawaService.options.type) || this.results.length > 1) {
             this.dawaService.update(this.terms, this.caretPos)
           }
         })
