@@ -23,7 +23,7 @@
           <div class="col l4">
             <vue-dawa @select="selectItem($event, 'firstAddress')"
                       :val="firstAddress.oneLineAddress"
-                      :showMax="5"
+                      :showMax="10"
                       placeholder="Demo placeholder"
                       containerId="container-0"
                       fieldId="field-0"
