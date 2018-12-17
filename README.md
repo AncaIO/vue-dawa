@@ -94,6 +94,8 @@ A quick example:
 |`addressId`|no|`String`| A DAWA address id. If provided, it will perform an automatic search on `created` and populate the field with the found address. It will also emit the `selected` event.|
 |`options`|no|`Object`, see default options below | Configuring the DAWA service. NOTE: The component was only intended for full addresses, but it should work with other types. See DAWA's docs for more info|       
 |`showMax`| no, but you might want it set| `Number`| Limits the number of visible results|
+|`resultsListStyle`|no|`Object`|Provide style for results list|
+|`listScrollBehavior`|no|`Object`|Define the scroll behavior for the results list, to be used by [`Element.scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView)
 ## Default options prop
 ```javascript 
 {
@@ -123,6 +125,17 @@ You can require the default style:
 require('vue-dawa/dist/vue-dawa.min.css')
 ```
 or customize the css yourself. Remember you can add custom classes to all the elements of the componets. 
+
+For the results list, you can also provide styling options via the `resultsListStyle` prop. For instance, if you want to control the scroll of the list, this property's value could be: 
+```vue
+<vue-dawa 
+... other props
+:resultsListStyle = "{
+  maxHeight: '200px',
+  overflowY: 'auto',
+  overFlowX: 'hidden'
+}"/>
+```
 Here's a starting point for tweaking the default css.
 ```css
     .autocomplete-container {
