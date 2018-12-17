@@ -19,10 +19,12 @@
                 @keydown.esc="emptyResultsList()"
                 @blur="inputFocused = false">
         <slot name="label-bottom"></slot>
-        <ul class="dawa-autocomplete-suggestions" ref="resultsList" :class="listClasses" v-if="results && results.length > 0" :id="containerId + '_' + 'results'">
+        <ul class="dawa-autocomplete-suggestions" ref="resultsList" :class="listClasses" v-if="results &&
+        results.length > 0" :id="containerId + '_' + 'results'" :style="resultsListStyle">
             <li class="dawa-autocomplete-suggestion" :class="computedListItemClasses(index)"
                 v-for="(result, index) of results"
                 :key="index"
+                :id="'result_' + index"
                 :ref="'result_' + index"
                 @click.prevent="select(result)"
                 @enter.prevent="select(result)">
@@ -98,6 +100,22 @@
       showMax: {
         type: Number,
         required: false
+      },
+      resultsListStyle: {
+        type: Object,
+        default: () => {
+          return {}
+        }
+      },
+      listScrollBehavior: {
+        type: Object,
+        default: () => {
+          return {
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'nearest'
+          }
+        }
       }
     },
     data () {
@@ -187,12 +205,18 @@
         if (this.currentIndex > 0) {
           this.currentIndex--
         }
+        this.scrollToResult(this.currentIndex)
       },
       // When up pressed while suggestions are open
       down () {
         if (this.currentIndex < this.results.length - 1) {
           this.currentIndex++
         }
+        this.scrollToResult(this.currentIndex)
+      },
+      scrollToResult (index) {
+        let el = document.getElementById(`result_${index}`)
+        el.scrollIntoView(this.listScrollBehavior)
       },
       // For highlighting element
       isActive (index) {
