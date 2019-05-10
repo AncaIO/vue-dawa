@@ -2,7 +2,7 @@
     <div class="autocomplete-container" :class="containerClasses" :id="containerId"  ref="container">
       <form @submit.prevent autocomplete="off">
         <slot name="label-top"></slot>
-        <input type="text" ref="input" :class="fieldClasses"
+        <input type="search" ref="input" :class="fieldClasses"
                 v-focus.lazy="inputFocused"
                 :placeholder="placeholder"
                 :id="fieldId"
