@@ -4,13 +4,40 @@
       <nav>
         <div class="nav-wrapper">
           <div class="container">
-            <a href="#" class="brand-logo">{{moduleName}} v.{{moduleVersion}} <sup><a href="https://travis-ci.org/AncaIO/vue-dawa" target="_blank"><img src="https://travis-ci.org/AncaIO/vue-dawa.svg?branch=master"></a></sup></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <li><a href="https://www.anca.io"><i class="fas fa-home"></i></a></li>
-              <li><a :href="repo" target="_blank"><i class="fab fa-github"></i></a></li>
-              <li><a :href="bugs" target="_blank"><i class="fas fa-bug"></i></a></li>
-              <li><a href="https://www.npmjs.com/package/vuejs-dawa" target="_blank"><i class="fab fa-npm"></i></a></li>
-              <li><a href="https://www.linkedin.com/in/ancaio"><i class="fab fa-linkedin-in"></i></a></li>
+            <a
+              href="#"
+              class="brand-logo"
+            >{{ moduleName }} v.{{ moduleVersion }} <sup><a
+              href="https://travis-ci.org/AncaIO/vue-dawa"
+              target="_blank"
+            ><img
+              alt="travis report"
+              src="https://travis-ci.org/AncaIO/vue-dawa.svg?branch=master"
+            ></a></sup></a>
+            <ul
+              id="nav-mobile"
+              class="right hide-on-med-and-down"
+            >
+              <li><a href="https://www.anca.io"><i class="fas fa-home" /></a></li>
+              <li>
+                <a
+                  :href="repo"
+                  target="_blank"
+                ><i class="fab fa-github" /></a>
+              </li>
+              <li>
+                <a
+                  :href="bugs"
+                  target="_blank"
+                ><i class="fas fa-bug" /></a>
+              </li>
+              <li>
+                <a
+                  href="https://www.npmjs.com/package/vuejs-dawa"
+                  target="_blank"
+                ><i class="fab fa-npm" /></a>
+              </li>
+              <li><a href="https://www.linkedin.com/in/ancaio"><i class="fab fa-linkedin-in" /></a></li>
             </ul>
           </div>
         </div>
@@ -21,68 +48,87 @@
         </h1>
         <div class="row">
           <div class="col l4">
-            <vue-dawa @select="selectItem($event, 'firstAddress')"
-                      :val="firstAddress.oneLineAddress"
-                      :showMax="10"
-                      placeholder="Demo placeholder"
-                      containerId="container-0"
-                      fieldId="field-0"
-                      fieldName="field-0"
-                      field-classes="boo"
-                      container-classes="yah"
-                      :list-classes="{'banana': true}"
-                      :list-item-classes="{'papaya': true}"
-                      @listHeightUpdated="doStuffWithHeight($event)"
+            <vue-dawa
+              :val="firstAddress.oneLineAddress"
+              :show-max="10"
+              placeholder="Demo placeholder"
+              container-id="container-0"
+              field-id="field-0"
+              field-name="field-0"
+              field-classes="boo"
+              container-classes="yah"
+              :list-classes="{'banana': true}"
+              :list-item-classes="{'papaya': true}"
+              @select="selectItem($event, 'firstAddress')"
+              @listHeightUpdated="doStuffWithHeight($event)"
             >
-              <label slot="label-top" for="field-0">With an initial oneline address</label>
+              <label
+                slot="label-top"
+                for="field-0"
+              >With an initial oneline address</label>
             </vue-dawa>
-            <div class="clear"></div>
+            <div class="clear" />
             <pre>
-              <code>{{firstAddress}}</code>
+              <code>{{ firstAddress }}</code>
             </pre>
           </div>
           <div class="col l4">
-            <vue-dawa @select="selectItem($event, 'secondAddress')"
-                      :val="secondAddress.oneLineAddress"
-                      :addressId="secondAddress.id"
-                      :showMax="5"
-                      placeholder="Demo placeholder"
-                      containerId="container-1"
-                      fieldId="field-1"
-                      fieldName="field-1">
-              <label slot="label-top" for="field-1">Empty initial value, with DAWA address ID</label>
+            <vue-dawa
+              :val="secondAddress.oneLineAddress"
+              :address-id="secondAddress.id"
+              :show-max="5"
+              placeholder="Demo placeholder"
+              container-id="container-1"
+              field-id="field-1"
+              field-name="field-1"
+              @select="selectItem($event, 'secondAddress')"
+            >
+              <label
+                slot="label-top"
+                for="field-1"
+              >Empty initial value, with DAWA address ID</label>
             </vue-dawa>
-            <div class="clear"></div>
+            <div class="clear" />
             <pre>
-              <code>{{secondAddress}}</code>
+              <code>{{ secondAddress }}</code>
             </pre>
           </div>
           <div class="col l4">
-            <vue-dawa @select="selectItem($event, 'thirdAddress')"
-                      :val="thirdAddress.oneLineAddress"
-                      :showMax="5"
-                      placeholder="Demo placeholder"
-                      containerId="container-2"
-                      fieldId="field-2"
-                      fieldName="field-2">
-              <label slot="label-top" for="field-2">Empty oneline address</label>
+            <vue-dawa
+              :val="thirdAddress.oneLineAddress"
+              :show-max="5"
+              placeholder="Demo placeholder"
+              container-id="container-2"
+              field-id="field-2"
+              field-name="field-2"
+              @select="selectItem($event, 'thirdAddress')"
+            >
+              <label
+                slot="label-top"
+                for="field-2"
+              >Empty oneline address</label>
             </vue-dawa>
-            <div class="clear"></div>
+            <div class="clear" />
             <pre>
-              <code>{{thirdAddress}}</code>
+              <code>{{ thirdAddress }}</code>
             </pre>
           </div>
         </div>
       </div>
       <footer class="page-footer">
-        <p> © 2011 - {{new Date(Date.now()).getFullYear()}}  <a href="https://www.anca.io" target="_blank">Anca I/O</a></p>
+        <p>
+          © 2011 - {{ new Date(Date.now()).getFullYear() }}  <a
+            href="https://www.anca.io"
+            target="_blank"
+          >Anca I/O</a>
+        </p>
       </footer>
     </div>
   </div>
 </template>
 
 <script type="text/javascript">
-import VueDawa from '../src/index'
+import VueDawa from './components/index'
 const VERSION = JSON.stringify(require('../package.json').version).replace(/"/g, '')
 const NAME = JSON.stringify(require('../package.json').config.prettyName).replace(/"/g, '')
 const REPO = JSON.stringify(require('../package.json').homepage).replace(/"/g, '')
