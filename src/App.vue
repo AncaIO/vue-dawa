@@ -60,7 +60,6 @@
               :list-classes="{'banana': true}"
               :list-item-classes="{'papaya': true}"
               @select="selectItem($event, 'firstAddress')"
-              @listHeightUpdated="doStuffWithHeight($event)"
             >
               <label
                 slot="label-top"
@@ -169,9 +168,6 @@ export default {
         city: address.data.postnrnavn,
         oneLineAddress: address.tekst
       }
-    },
-    doStuffWithHeight (event) {
-      console.log(event)
     }
   }
 }
