@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import VueDawa from '../src/index'
+import Vue from 'vue/types'
+import VueDawa from '../../src/components/index'
 import { mount } from 'vue-test-utils'
 import expect from 'expect'
 let describe = require('mocha').describe
