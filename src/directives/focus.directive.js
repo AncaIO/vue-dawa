@@ -14,8 +14,7 @@ export const focus = {
 
     if (binding.value) {
       el.focus()
-    }
-    else {
+    } else {
       el.blur()
     }
   }

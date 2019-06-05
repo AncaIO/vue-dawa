@@ -1,13 +1,12 @@
 'use strict'
 export const getInputSelection = (el) => {
-  let start = 0, end = 0, normalizedValue, range,
-    textInputRange, len, endRange
+  let start = 0; let end = 0; let normalizedValue; let range
+  let textInputRange; let len; let endRange
 
   if (typeof el.selectionStart === 'number' && typeof el.selectionEnd === 'number') {
     start = el.selectionStart
     end = el.selectionEnd
-  }
-  else {
+  } else {
     range = document.selection.createRange()
 
     if (range && range.parentElement() === el) {
@@ -26,15 +25,13 @@ export const getInputSelection = (el) => {
 
       if (textInputRange.compareEndPoints('StartToEnd', endRange) > -1) {
         start = end = len
-      }
-      else {
+      } else {
         start = -textInputRange.moveStart('character', -len)
         start += normalizedValue.slice(0, start).split('\n').length - 1
 
         if (textInputRange.compareEndPoints('EndToEnd', endRange) > -1) {
           end = len
-        }
-        else {
+        } else {
           end = -textInputRange.moveEnd('character', -len)
           end += normalizedValue.slice(0, end).split('\n').length - 1
         }

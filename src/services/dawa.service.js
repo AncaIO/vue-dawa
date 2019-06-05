@@ -1,6 +1,6 @@
 'use strict'
-import axios from 'axios'
-import {formatParams, delay} from './utils'
+import axios from 'axios/index'
+import { formatParams, delay } from '../utils/utils'
 
 const defaultOptions = {
   params: {},
@@ -67,8 +67,7 @@ export class DawaService {
   _scheduleRequest (request) {
     if (this.state.currentRequest !== null) {
       this.state.pendingRequest = request
-    }
-    else {
+    } else {
       this.state.currentRequest = request
       this._executeRequest()
     }
@@ -86,14 +85,12 @@ export class DawaService {
         skipVejnavn = item.type === 'vejnavn'
         text = item.tekst
         caretpos = item.caretpos
-      }
-      else {
+      } else {
         this.options.selectCallback(item)
         this.selected = item
         this._requestCompleted()
       }
-    }
-    else {
+    } else {
       text = request.text
       caretpos = request.caretpos
     }
@@ -106,14 +103,12 @@ export class DawaService {
         .then(
           result => this._handleResponse(request, result),
           error => this._handleFailedRequest(request, error))
-    }
-    else if (request.selected || (request.text && request.text.length >= this.options.minLength)) {
+    } else if (request.selected || (request.text && request.text.length >= this.options.minLength)) {
       this._getAutocompleteResponse(text, caretpos, skipVejnavn, adgangsadresseid, this.options.supplerendebynavn, this.options.stormodtagerpostnumre)
         .then(
           result => this._handleResponse(request, result),
           error => this._handleFailedRequest(request, error))
-    }
-    else {
+    } else {
       this._handleResponse(request, [])
     }
   }
@@ -134,26 +129,22 @@ export class DawaService {
         const item = result[0]
         if (item.type === this.options.type) {
           this.options.selectCallback(item)
-        }
-        else {
+        } else {
           if (!this.state.pendingRequest) {
             this.state.pendingRequest = {
               selected: item
             }
           }
         }
-      }
-      else if (this.options.renderCallback) {
+      } else if (this.options.renderCallback) {
         this.options.renderCallback(result)
       }
-    }
-    else if (request.selectedId) {
+    } else if (request.selectedId) {
       if (result.length === 1) {
         this.selected = result[0]
         this.options.initialRenderCallback(result)
       }
-    }
-    else {
+    } else {
       if (this.options.renderCallback) {
         this.options.renderCallback(result)
       }
