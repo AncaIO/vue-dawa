@@ -82,98 +82,97 @@
 </template>
 
 <script type="text/javascript">
-  import VueDawa from '../src/index'
-  const VERSION = JSON.stringify(require('../package.json').version).replace(/"/g, '')
-  const NAME = JSON.stringify(require('../package.json').config.prettyName).replace(/"/g, '')
-  const REPO = JSON.stringify(require('../package.json').homepage).replace(/"/g, '')
-  const BUGS = JSON.stringify(require('../package.json').bugs.url).replace(/"/g, '')
-
-  export default {
-    components: {
-      VueDawa
-    },
-    data () {
-      return {
-        moduleName: NAME,
-        moduleVersion: VERSION,
-        repo: REPO,
-        bugs: BUGS,
-        firstAddress: {
-          oneLineAddress: 'Tagensvej'
-        },
-        secondAddress: {
-          id: '0a3f50a3-4152-32b8-e044-0003ba298018'
-        },
-        thirdAddress: {
-          oneLineAddress: ''
-        }
-      }
-    },
-    methods: {
-      selectItem (event, object) {
-        this.$set(this, object, this.translateData(event))
+import VueDawa from '../src/index'
+const VERSION = JSON.stringify(require('../package.json').version).replace(/"/g, '')
+const NAME = JSON.stringify(require('../package.json').config.prettyName).replace(/"/g, '')
+const REPO = JSON.stringify(require('../package.json').homepage).replace(/"/g, '')
+const BUGS = JSON.stringify(require('../package.json').bugs.url).replace(/"/g, '')
+export default {
+  components: {
+    VueDawa
+  },
+  data () {
+    return {
+      moduleName: NAME,
+      moduleVersion: VERSION,
+      repo: REPO,
+      bugs: BUGS,
+      firstAddress: {
+        oneLineAddress: 'Tagensvej'
       },
-      translateData (address) {
-        return {
-          id: address.data.id,
-          street: address.data.vejnavn,
-          streetNumber: address.data.husnr,
-          floor: address.data.etage,
-          door: address.data.dør,
-          zipCode: address.data.postnr,
-          city: address.data.postnrnavn,
-          oneLineAddress: address.tekst
-        }
+      secondAddress: {
+        id: '0a3f50a3-4152-32b8-e044-0003ba298018'
       },
-      doStuffWithHeight (event) {
-        console.log(event)
+      thirdAddress: {
+        oneLineAddress: ''
       }
     }
+  },
+  methods: {
+    selectItem (event, object) {
+      this.$set(this, object, this.translateData(event))
+    },
+    translateData (address) {
+      return {
+        id: address.data.id,
+        street: address.data.vejnavn,
+        streetNumber: address.data.husnr,
+        floor: address.data.etage,
+        door: address.data.dør,
+        zipCode: address.data.postnr,
+        city: address.data.postnrnavn,
+        oneLineAddress: address.tekst
+      }
+    },
+    doStuffWithHeight (event) {
+      console.log(event)
+    }
   }
+}
 </script>
 <style lang="css">
-  html, body {
-    min-height: 100vh;
-    height: 100%;
-    background-color: silver;
-  }
-  #main_container {
-    min-height: 100vh;
-  }
-  .field-container {
-    margin-top: 50px;
-    max-height: 250px;
-    overflow: hidden;
-    background: white;
-    padding: 40px 40px 40px 40px;
-  }
-  .field-container-no {
-    margin-top: 75px;
-    background: white;
-    padding: 40px 40px 40px 40px;
-  }
-  h1 > small {
-    font-size: 60%
-  }
-  h1 code {
-    font-size: 75%;
-    background: silver;
-    padding: 2px 10px;
-    border-radius: 4px;
-  }
-  footer {
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-  }
-  .page-footer {
-    padding: 0
-  }
-  .page-footer p {
-    text-align: center;
-    width: 100%;
-  }
-  .page-footer a {
-    color: white; font-weight: 500; margin-left: 15px;
-  }
+html, body {
+  min-height: 100vh;
+  height: 100%;
+  background-color: silver;
+}
+#main_container {
+  min-height: 100vh;
+}
+.field-container {
+  margin-top: 50px;
+  max-height: 250px;
+  overflow: hidden;
+  background: white;
+  padding: 40px 40px 40px 40px;
+}
+.field-container-no {
+  margin-top: 75px;
+  background: white;
+  padding: 40px 40px 40px 40px;
+}
+h1 > small {
+  font-size: 60%
+}
+h1 code {
+  font-size: 75%;
+  background: silver;
+  padding: 2px 10px;
+  border-radius: 4px;
+}
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+.page-footer {
+  padding: 0
+}
+.page-footer p {
+  text-align: center;
+  width: 100%;
+}
+.page-footer a {
+  color: white; font-weight: 500; margin-left: 15px;
+}
 </style>
