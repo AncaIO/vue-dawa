@@ -4,8 +4,11 @@
   "description": "A Vue2 component for one-line address autocomplete using Danmarks Adresser WEB API.",
   "main": "./dist/vue-dawa.min.js",
   "files": [
-    "dist",
-    "src"
+    "dist/*",
+    "src/*",
+    "public/*",
+    "*.json",
+    "*.js"
   ],
   "config": {
     "prettyName": "Vue DAWA"
