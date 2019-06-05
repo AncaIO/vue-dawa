@@ -1,11 +1,13 @@
+const nodeExternals = require('webpack-node-externals')
+
 module.exports = {
   configureWebpack: {
     output: {
       libraryExport: 'default'
-    }
+    },
+    externals: [nodeExternals()]
   },
   css: {
-    // Enable CSS source maps.
     sourceMap: true,
     extract: false
   }

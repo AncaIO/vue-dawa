@@ -1,13 +1,8 @@
-import Vue from 'vue/types'
 import VueDawa from '../../src/components/index'
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 import expect from 'expect'
-let describe = require('mocha').describe
-let it = require('mocha').it
 let run = require('mocha').run
-Vue.config.productionTip = false
-// let beforeEach = require('mocha').beforeEach
-// let afterEach = require('mocha').afterEach
+
 let withInitialOnelineAddress = mount(VueDawa, {
   propsData: {
     fieldId: 'test',
