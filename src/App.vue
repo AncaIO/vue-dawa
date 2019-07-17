@@ -18,7 +18,7 @@
               id="nav-mobile"
               class="right hide-on-med-and-down"
             >
-              <li><a href="https://www.anca.io"><i class="fas fa-home" /></a></li>
+              <li><a href="https://www.anca.io" target="_blank"><i class="fas fa-home" /></a></li>
               <li>
                 <a
                   :href="repo"
@@ -33,19 +33,16 @@
               </li>
               <li>
                 <a
-                  href="https://www.npmjs.com/package/vuejs-dawa"
+                  href="https://www.npmjs.com/package/@ancaio/vue-dawa"
                   target="_blank"
                 ><i class="fab fa-npm" /></a>
               </li>
-              <li><a href="https://www.linkedin.com/in/ancaio"><i class="fab fa-linkedin-in" /></a></li>
+              <li><a href="https://www.linkedin.com/in/ancaio" target="_blank"><i class="fab fa-linkedin-in" /></a></li>
             </ul>
           </div>
         </div>
       </nav>
       <div class="container field-container-no">
-        <h1 style="margin: 0">
-          <small>In plain container</small>
-        </h1>
         <div class="row">
           <div class="col l4">
             <vue-dawa
