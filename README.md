@@ -23,7 +23,7 @@ In lib mode, Vue is externalized. This means the bundle will not bundle Vue even
 ## Usage
 Make sure to import the component: 
 ```javascript
-  import VueDawa from 'vue-dawa'
+  import VueDawa from '@ancaio/vue-dawa/sfc'
 ```
 Add it to your components' components: 
 ```javascript
@@ -128,9 +128,9 @@ You can use this height to compute a min-height property on the container in que
 It's not flawless, but it will allow you to use the component in a container with `overflow: hidden`.  
 
 ## Styling 
-You can require the default style: 
+You can import the default style: 
 ```javascript
-require('vue-dawa/dist/vue-dawa.min.css')
+import '@ancaio/vue-dawa/dist/vue-dawa.css'
 ```
 or customize the css yourself. Remember you can add custom classes to all the elements of the componets. 
 
