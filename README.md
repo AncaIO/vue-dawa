@@ -8,9 +8,17 @@ It relies heavily on https://github.com/DanmarksAdresser/dawa-autocomplete2, but
 
 ## Installation
 
+If you don't already use axios, install `axios` together with `vue-dawa`:
+
+``` 
+npm install --save axios @ancaio/vue-dawa
+```
+Or just:
+
 ```bash
 npm install --save @ancaio/vue-dawa
 ```
+
 #### Note on IE Compatibility
 
 In lib mode, the public path is dynamically determined based on the URL from which the main js file is loaded (to enable dynamic assets loading). However, this feature requires document.currentScript support, which is missing in IE. So it's recommended to include the current-script-polyfill in the final web page before the library is imported, if IE support is a requirement.
@@ -18,7 +26,6 @@ In lib mode, the public path is dynamically determined based on the URL from whi
 #### Note on Vue Dependency
 
 In lib mode, Vue is externalized. This means the bundle will not bundle Vue even if your code imports Vue. If the lib is used via a bundler, it will attempt to load Vue as a dependency through the bundler; otherwise, it falls back to a global Vue variable.
-
 
 ## Usage
 Make sure to import the component: 
