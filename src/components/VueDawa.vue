@@ -63,9 +63,7 @@ import { DawaService } from '../services/dawa.service'
 import { mixin } from '../directives/focus.directive'
 export default {
   name: 'VueDawa',
-  mixins: [
-    mixin
-  ],
+  mixins: [mixin],
   props: {
     // optional placeholder
     placeholder: {
@@ -198,22 +196,31 @@ export default {
   },
   methods: {
     computedListItemClasses (index) {
-      return Object.assign({ 'active': this.isActive(index) }, this.listItemClasses)
+      return Object.assign(
+        { active: this.isActive(index) },
+        this.listItemClasses
+      )
     },
     search () {
       this.inputFocused = true
       this.currentIndex = 0
-      if (this.terms && this.terms.length < this.dawaService.options.minLength) {
+      if (
+        this.terms &&
+        this.terms.length < this.dawaService.options.minLength
+      ) {
         this.$set(this, 'results', [])
         this.listHeight = 0
       }
-      this.getCaretPosition()
-        .then(() => {
-          if (this.caretPos !== this.oldCaretPos && this.terms && this.terms.length >= this.dawaService.options.minLength) {
-            // caret position is now updated, proceed with search
-            this.dawaService.update(this.terms, this.caretPos)
-          }
-        })
+      this.getCaretPosition().then(() => {
+        if (
+          this.caretPos !== this.oldCaretPos &&
+          this.terms &&
+          this.terms.length >= this.dawaService.options.minLength
+        ) {
+          // caret position is now updated, proceed with search
+          this.dawaService.update(this.terms, this.caretPos)
+        }
+      })
     },
     handleResults (response) {
       this.emptyResultsList()
@@ -226,7 +233,9 @@ export default {
       let max = this.showMax ? this.showMax : results.length
       this.$set(this, 'results', results.slice(0, max))
       this.$nextTick(() => {
-        let resultsList = document.getElementById(this.containerId + '_' + 'results')
+        let resultsList = document.getElementById(
+          this.containerId + '_' + 'results'
+        )
         if (resultsList) {
           this.listHeight = resultsList.getBoundingClientRect().height
         }
@@ -249,8 +258,12 @@ export default {
       this.currentIndex = 0
       this.emptyResultsList()
       // results aren't yet narrowed down to a full address, search again
-      if ((this.terms.length >= this.defaultCaretPos && this.caretPos !== this.terms.length) || (item.type !==
-        this.dawaService.options.type) || this.results.length > 1) {
+      if (
+        (this.terms.length >= this.defaultCaretPos &&
+          this.caretPos !== this.terms.length) ||
+        item.type !== this.dawaService.options.type ||
+        this.results.length > 1
+      ) {
         this.dawaService.update(this.terms, this.caretPos)
       }
     },
@@ -284,11 +297,14 @@ export default {
       this.$set(this, 'results', [])
     },
     getCaretPosition () {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         setTimeout(() => {
-          let position = getInputSelection(document.getElementById(this.fieldId)).start
+          let position = getInputSelection(
+            document.getElementById(this.fieldId)
+          ).start
           this.oldCaretPos = this.caretPos
-          this.caretPos = position > this.defaultCaretPos ? position : this.defaultCaretPos
+          this.caretPos =
+            position > this.defaultCaretPos ? position : this.defaultCaretPos
           resolve()
         }, 5)
       })
@@ -308,7 +324,11 @@ export default {
     },
     handleClickOutside (e) {
       const el = this.$refs.container
-      if ((e.target !== this.$refs.input && e.target !== this.$refs.resultsList) || !el.contains(e.target)) {
+      if (
+        (e.target !== this.$refs.input &&
+          e.target !== this.$refs.resultsList) ||
+        !el.contains(e.target)
+      ) {
         this.emptyResultsList()
       }
     }
@@ -339,7 +359,7 @@ export default {
   text-align: left;
   border-radius: 0.3125em;
   background: #fcfcfc;
-  box-shadow: 0 0.0625em 0.15625em rgba(0,0,0,.15);
+  box-shadow: 0 0.0625em 0.15625em rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
 }
 

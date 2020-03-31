@@ -7,37 +7,64 @@
             <a
               href="#"
               class="brand-logo"
-            >{{ moduleName }} v.{{ moduleVersion }} <sup><a
-              href="https://travis-ci.org/AncaIO/vue-dawa"
-              target="_blank"
-            ><img
-              alt="travis report"
-              src="https://travis-ci.org/AncaIO/vue-dawa.svg?branch=master"
-            ></a></sup></a>
+            >
+              {{ moduleName }} v.{{ moduleVersion }}
+              <sup>
+                <a
+                  href="https://travis-ci.org/AncaIO/vue-dawa"
+                  target="_blank"
+                >
+                  <img
+                    alt="travis report"
+                    src="https://travis-ci.org/AncaIO/vue-dawa.svg?branch=master"
+                  >
+                </a>
+              </sup>
+            </a>
             <ul
               id="nav-mobile"
               class="right hide-on-med-and-down"
             >
-              <li><a href="https://www.anca.io" target="_blank"><i class="fas fa-home" /></a></li>
+              <li>
+                <a
+                  href="https://www.anca.io"
+                  target="_blank"
+                >
+                  <i class="fas fa-home" />
+                </a>
+              </li>
               <li>
                 <a
                   :href="repo"
                   target="_blank"
-                ><i class="fab fa-github" /></a>
+                >
+                  <i class="fab fa-github" />
+                </a>
               </li>
               <li>
                 <a
                   :href="bugs"
                   target="_blank"
-                ><i class="fas fa-bug" /></a>
+                >
+                  <i class="fas fa-bug" />
+                </a>
               </li>
               <li>
                 <a
                   href="https://www.npmjs.com/package/@ancaio/vue-dawa"
                   target="_blank"
-                ><i class="fab fa-npm" /></a>
+                >
+                  <i class="fab fa-npm" />
+                </a>
               </li>
-              <li><a href="https://www.linkedin.com/in/ancaio" target="_blank"><i class="fab fa-linkedin-in" /></a></li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/ancaio"
+                  target="_blank"
+                >
+                  <i class="fab fa-linkedin-in" />
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -113,7 +140,8 @@
       </div>
       <footer class="page-footer">
         <p>
-          © 2011 - {{ new Date(Date.now()).getFullYear() }}  <a
+          © 2011 - {{ new Date(Date.now()).getFullYear() }}
+          <a
             href="https://www.anca.io"
             target="_blank"
           >Anca I/O</a>
@@ -125,10 +153,21 @@
 
 <script type="text/javascript">
 import VueDawa from './components/index'
-const VERSION = JSON.stringify(require('../package.json').version).replace(/"/g, '')
-const NAME = JSON.stringify(require('../package.json').config.prettyName).replace(/"/g, '')
-const REPO = JSON.stringify(require('../package.json').homepage).replace(/"/g, '')
-const BUGS = JSON.stringify(require('../package.json').bugs.url).replace(/"/g, '')
+const VERSION = JSON.stringify(require('../package.json').version).replace(
+  /"/g,
+  ''
+)
+const NAME = JSON.stringify(
+  require('../package.json').config.prettyName
+).replace(/"/g, '')
+const REPO = JSON.stringify(require('../package.json').homepage).replace(
+  /"/g,
+  ''
+)
+const BUGS = JSON.stringify(require('../package.json').bugs.url).replace(
+  /"/g,
+  ''
+)
 export default {
   components: {
     VueDawa
@@ -170,7 +209,8 @@ export default {
 }
 </script>
 <style lang="css">
-html, body {
+html,
+body {
   min-height: 100vh;
   height: 100%;
   background-color: silver;
@@ -191,7 +231,7 @@ html, body {
   padding: 40px 40px 40px 40px;
 }
 h1 > small {
-  font-size: 60%
+  font-size: 60%;
 }
 h1 code {
   font-size: 75%;
@@ -205,13 +245,15 @@ footer {
   bottom: 0;
 }
 .page-footer {
-  padding: 0
+  padding: 0;
 }
 .page-footer p {
   text-align: center;
   width: 100%;
 }
 .page-footer a {
-  color: white; font-weight: 500; margin-left: 15px;
+  color: white;
+  font-weight: 500;
+  margin-left: 15px;
 }
 </style>
