@@ -225,16 +225,16 @@ export default {
     },
     handleResults (response) {
       this.emptyResultsList()
-      let results = []
+      const results = []
       if (response.length) {
-        for (let item of response) {
+        for (const item of response) {
           results.push(item)
         }
       }
-      let max = this.showMax ? this.showMax : results.length
+      const max = this.showMax ? this.showMax : results.length
       this.$set(this, 'results', results.slice(0, max))
       this.$nextTick(() => {
-        let resultsList = document.getElementById(
+        const resultsList = document.getElementById(
           this.containerId + '_' + 'results'
         )
         if (resultsList) {
@@ -282,7 +282,7 @@ export default {
       this.scrollToResult(this.currentIndex)
     },
     scrollToResult (index) {
-      let el = document.getElementById(`result_${index}`)
+      const el = document.getElementById(`result_${index}`)
       el.scrollIntoView(this.listScrollBehavior)
     },
     // For highlighting element
@@ -296,7 +296,7 @@ export default {
     getCaretPosition () {
       return new Promise(resolve => {
         setTimeout(() => {
-          let position = getInputSelection(
+          const position = getInputSelection(
             document.getElementById(this.fieldId)
           ).start
           this.oldCaretPos = this.caretPos
@@ -307,12 +307,12 @@ export default {
       })
     },
     setCaretPosition (pos) {
-      let elem = document.getElementById(this.fieldId)
+      const elem = document.getElementById(this.fieldId)
       if (elem.setSelectionRange) {
         this.getCaretPosition()
         elem.setSelectionRange(pos, pos)
       } else if (elem.createTextRange) {
-        let range = elem.createTextRange()
+        const range = elem.createTextRange()
         range.collapse(true)
         range.moveEnd('character', pos)
         range.moveStart('character', pos)
