@@ -184,6 +184,7 @@ export default {
     this.dawaService = new DawaService(this.options, this.handleResults)
     if (this.addressId && this.initActions) {
       this.dawaService.selectInitial(this.addressId)
+      this.initActions = false
     }
   },
   mounted () {
@@ -240,10 +241,6 @@ export default {
           this.listHeight = resultsList.getBoundingClientRect().height
         }
       })
-      if (this.results.length === 1 && this.initActions) {
-        this.select(this.results[0])
-        this.initActions = false
-      }
     },
     select (item) {
       if (!item) {
