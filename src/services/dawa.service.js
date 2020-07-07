@@ -28,8 +28,7 @@ const defaultOptions = {
 }
 export class DawaService {
   constructor (options, callback) {
-    options = Object.assign({}, defaultOptions, options || {})
-    this.options = options
+    this.options = Object.assign({}, defaultOptions, options || {})
     if (this.options.adgangsadresserOnly) {
       this.options.type = 'adgangsadresse'
     }
@@ -44,14 +43,14 @@ export class DawaService {
   }
 
   _getAutocompleteResponse (text, caretpos, skipVejnavn, adgangsadresseid, supplerendebynavn, stormodtagerpostnumre) {
-    const params = Object.assign({}, this.options.params, {
+    const params = Object.assign({}, {
       q: text,
       type: this.options.type,
       caretpos: caretpos,
       supplerendebynavn,
       stormodtagerpostnumre,
       multilinje: true
-    })
+    }, this.options.params)
     if (this.options.fuzzy) {
       params.fuzzy = ''
     }
