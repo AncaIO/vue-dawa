@@ -59,3 +59,12 @@ describe('VueDawa', () => {
     done()
   })
 })
+
+describe('VueDawa', () => {
+  it('when addressId 0a3f50a3-4152-32b8-e044-0003ba298018 is provided, the field value should match: Måløvvang 6, 1. tv, 2760 Måløv', (done) => {
+    withAddressId.vm.$emit('select', withAddressId.vm.$data.selectedResult)
+    done()
+    expect(withAddressId.text()).to.contain('Måløvvang 6, 1. tv, 2760 Måløv')
+    done()
+  })
+})
