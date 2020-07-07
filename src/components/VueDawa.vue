@@ -178,6 +178,14 @@ export default {
     },
     listHeight (newVal) {
       this.$emit('listHeightUpdated', newVal)
+    },
+    results: {
+      handler (newVal) {
+        if (this.addressId) {
+          this.select(newVal[0])
+        }
+      },
+      immediate: true
     }
   },
   created () {
