@@ -75,7 +75,7 @@ translateData (address) {
     door: address.data.dør,
     zipCode: address.data.postnr,
     city: address.data.postnrnavn,
-    oneLineAddress: address.tekst
+    oneLineAddress: address.oneLineAddress // formatted one-line address, OR address.forslagstekst OR address.tekst
   }
 }
 ```

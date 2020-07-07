@@ -202,7 +202,7 @@ export default {
         door: address.data.dør,
         zipCode: address.data.postnr,
         city: address.data.postnrnavn,
-        oneLineAddress: address.tekst
+        oneLineAddress: address.oneLineAddress
       }
     }
   }

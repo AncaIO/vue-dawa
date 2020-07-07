@@ -50,7 +50,7 @@
           @click.prevent="select(result)"
           @enter.prevent="select(result)"
         >
-          {{ result.tekst }}
+          {{ result.oneLineAddress }}
         </li>
       </ul>
     </form>
@@ -236,6 +236,9 @@ export default {
       const results = []
       if (response.length) {
         for (const item of response) {
+          let rows = item.forslagstekst.split('\n')
+          rows = rows.map(row => row.replace(/ /g, '\u00a0'))
+          item.oneLineAddress = rows.join(', ')
           results.push(item)
         }
       }
