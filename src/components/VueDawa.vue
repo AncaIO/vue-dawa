@@ -269,7 +269,7 @@ export default {
         item.type !== this.dawaService.options.type ||
         this.results.length > 1
       ) {
-        this.dawaService.update(this.terms, this.caretPos)
+        this.dawaService.select(item)
       }
     },
     enter () {
