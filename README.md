@@ -100,7 +100,7 @@ A quick example:
 |`placeholder`|no|`String`| Displays a placeholder in the input field|
 |`containerId`|yes|`String`| Provides the `id` attribute of the component wrapper and is used in computing a unique id for the list of results used in height detection|
 |`containerClasses`|no|`String` or `Object`| Custom styling|
-|`disabled`|no|`Boolean`| Disable input|
+|`disabled`|no|`Boolean`| Disable input. Remember to add 'disabled' in your `fieldClasses` prop for the default disabled styling, or use your own.|
 |`fieldId`|yes|`String`|When combined with a label, improves accessibility|
 |`fieldClasses`|no|`String` or `Object`| Custom styling|
 |`fieldName`|no|`String`|Can be useful in form validation|
