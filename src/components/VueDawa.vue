@@ -20,6 +20,7 @@
         :placeholder="placeholder"
         :name="fieldName"
         :cursor="caretPos"
+        :disabled="disabled"
         @input="search()"
         @focus="search()"
         @keydown.left="search()"
@@ -125,6 +126,11 @@ export default {
       default: () => {
         return {}
       }
+    },
+    disabled: {
+      type: Boolean,
+      required: false,
+      default: false
     },
     showMax: {
       type: Number,
