@@ -100,10 +100,12 @@
               :val="secondAddress.oneLineAddress"
               :address-id="secondAddress.id"
               :show-max="5"
+              disabled
               placeholder="Demo placeholder"
               container-id="container-1"
               field-id="field-1"
               field-name="field-1"
+              field-classes="disabled"
               @select="selectItem($event, 'secondAddress')"
             >
               <label
