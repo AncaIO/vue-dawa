@@ -40,7 +40,8 @@
     "build-lib": "vue-cli-service build --target lib --name vue-dawa 'src/components/VueDawa.vue'",
     "lint": "vue-cli-service lint",
     "test:e2e": "vue-cli-service test:e2e",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "test": "npm run test:unit"
   },
   "dependencies": {
     "vue": "^2.6.12"
