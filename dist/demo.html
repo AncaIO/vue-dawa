@@ -1,0 +1,19 @@
+<meta charset="utf-8">
+<title>vue-dawa demo</title>
+<script src="https://unpkg.com/vue"></script>
+<script src="./vue-dawa.umd.js"></script>
+
+<link rel="stylesheet" href="./vue-dawa.css">
+
+
+<div id="app">
+  <demo></demo>
+</div>
+
+<script>
+new Vue({
+  components: {
+    demo: vue-dawa
+  }
+}).$mount('#app')
+</script>
