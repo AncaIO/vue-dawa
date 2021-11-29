@@ -5,56 +5,51 @@
     class="autocomplete-container"
     :class="containerClasses"
   >
-    <form
-      autocomplete="off"
-      @submit.prevent
+    <slot name="label-top" />
+    <input
+      :id="fieldId"
+      ref="input"
+      v-model="terms"
+      v-focus.lazy="inputFocused"
+      type="search"
+      :class="fieldClasses"
+      :placeholder="placeholder"
+      :name="fieldName"
+      :cursor="caretPos"
+      :disabled="disabled"
+      @input="search()"
+      @focus="search()"
+      @keydown.left="search()"
+      @keydown.right="search()"
+      @keyup.enter="enter()"
+      @keydown.down="down()"
+      @keydown.up="up()"
+      @keydown.esc="emptyResultsList()"
+      @blur="inputFocused = false"
     >
-      <slot name="label-top" />
-      <input
-        :id="fieldId"
-        ref="input"
-        v-model="terms"
-        v-focus.lazy="inputFocused"
-        type="search"
-        :class="fieldClasses"
-        :placeholder="placeholder"
-        :name="fieldName"
-        :cursor="caretPos"
-        :disabled="disabled"
-        @input="search()"
-        @focus="search()"
-        @keydown.left="search()"
-        @keydown.right="search()"
-        @keyup.enter="enter()"
-        @keydown.down="down()"
-        @keydown.up="up()"
-        @keydown.esc="emptyResultsList()"
-        @blur="inputFocused = false"
+    <slot name="label-bottom" />
+    <ul
+      v-if="results &&
+        results.length > 0"
+      :id="containerId + '_' + 'results'"
+      ref="resultsList"
+      class="dawa-autocomplete-suggestions"
+      :class="listClasses"
+      :style="resultsListStyle"
+    >
+      <li
+        v-for="(result, index) of results"
+        :id="'result_' + index"
+        :key="index"
+        :ref="'result_' + index"
+        class="dawa-autocomplete-suggestion"
+        :class="computedListItemClasses(index)"
+        @click.prevent="select(result)"
+        @enter.prevent="select(result)"
       >
-      <slot name="label-bottom" />
-      <ul
-        v-if="results &&
-          results.length > 0"
-        :id="containerId + '_' + 'results'"
-        ref="resultsList"
-        class="dawa-autocomplete-suggestions"
-        :class="listClasses"
-        :style="resultsListStyle"
-      >
-        <li
-          v-for="(result, index) of results"
-          :id="'result_' + index"
-          :key="index"
-          :ref="'result_' + index"
-          class="dawa-autocomplete-suggestion"
-          :class="computedListItemClasses(index)"
-          @click.prevent="select(result)"
-          @enter.prevent="select(result)"
-        >
-          {{ result.oneLineAddress }}
-        </li>
-      </ul>
-    </form>
+        {{ result.oneLineAddress }}
+      </li>
+    </ul>
   </div>
 </template>
 <script>
