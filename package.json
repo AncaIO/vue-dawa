@@ -80,14 +80,5 @@
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.12",
     "webpack-node-externals": "^1.7.2"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,vue}": [
-      "vue-cli-service lint",
-      "git add"
-    ]
   }
 }
